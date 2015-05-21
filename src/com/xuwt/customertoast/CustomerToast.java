@@ -1,7 +1,6 @@
 package com.xuwt.customertoast;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.PixelFormat;
 import android.os.Handler;
@@ -99,13 +98,20 @@ public class CustomerToast {
                 | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
 
-        final Configuration config = mView.getContext().getResources().getConfiguration();
+       /* final Configuration config = mView.getContext().getResources().getConfiguration();
         final int gravity = Gravity.getAbsoluteGravity(mGravity, config.getLayoutDirection());
         mParams.gravity = gravity;
         if ((gravity & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.FILL_HORIZONTAL) {
             mParams.horizontalWeight = 1.0f;
         }
         if ((gravity & Gravity.VERTICAL_GRAVITY_MASK) == Gravity.FILL_VERTICAL) {
+            mParams.verticalWeight = 1.0f;
+        }*/
+        mParams.gravity = mGravity;
+        if ((mGravity & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.FILL_HORIZONTAL) {
+            mParams.horizontalWeight = 1.0f;
+        }
+        if ((mGravity & Gravity.VERTICAL_GRAVITY_MASK) == Gravity.FILL_VERTICAL) {
             mParams.verticalWeight = 1.0f;
         }
         mParams.x = mX;
